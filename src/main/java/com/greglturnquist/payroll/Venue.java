@@ -29,6 +29,8 @@ public class Venue {
     private String city;
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
     private Set<Seat> seats;
+    @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
+    private Set<Performance> performances;
 
 
 

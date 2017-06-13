@@ -3,6 +3,7 @@ package com.greglturnquist.payroll;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -15,7 +16,8 @@ public class Production {
     private String description;
     private String name;
     private String playwright;
-
+    @OneToMany(mappedBy = "production", cascade = CascadeType.ALL)
+    private Set<Performance> performances;
 
     private Production() {}
 

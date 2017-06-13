@@ -36,6 +36,8 @@ public class DatabaseLoader implements CommandLineRunner {
 	private final SeatsRepository seatsRepository;
     private final TicketTypesRepository ticketTypesRepository;
     private final EmployeeRepository employeeRepository;
+    private final PerformanceRepository performanceRepository;
+    private final TicketsRepository ticketsRepository;
 
 	@Autowired
 	public DatabaseLoader(ProductionsRepository productionsRepository,
@@ -44,7 +46,10 @@ public class DatabaseLoader implements CommandLineRunner {
 						  VenueRepository venueRepository,
                           SeatsRepository seatsRepository,
                           TicketTypesRepository ticketTypesRepository,
-                          EmployeeRepository employeeRepository) {
+                          EmployeeRepository employeeRepository,
+                          PerformanceRepository performanceRepository,
+                          TicketsRepository ticketsRepository) {
+
 		this.productionsRepository = productionsRepository;
 		this.professionsRepository = professionsRepository;
 		this.theatreOfficesRepository = theatreOfficesRepository;
@@ -52,6 +57,8 @@ public class DatabaseLoader implements CommandLineRunner {
 	    this.seatsRepository = seatsRepository;
 	    this.ticketTypesRepository = ticketTypesRepository;
 	    this.employeeRepository = employeeRepository;
+	    this.performanceRepository = performanceRepository;
+	    this.ticketsRepository = ticketsRepository;
 	}
 
 	@Override
@@ -63,28 +70,34 @@ public class DatabaseLoader implements CommandLineRunner {
 //		this.theatreOfficesRepository.save(new TheatreOffice("Teatralna","11e", "01-134", "Warszawa"));
 //		this.theatreOfficesRepository.save(new TheatreOffice("Marszalkowska","124e", "01-111", "Krakow"));
 
-        System.out.println("\n1.All productions...");
-		for (Production production : productionsRepository.findAll()) {
-			System.out.println(production);
-		}
-		System.out.println("\n1.All professions...");
-		for (Profession profession : professionsRepository.findAll()) {
-			System.out.println(profession);
-		}
-		for(TheatreOffice office : theatreOfficesRepository.findAllByCity("Warszawa")) {
-			System.out.println(office.getCity());
-		}
-        for(Venue venue : venueRepository.findAll()) {
-            System.out.println(venue.getName());
-        }
-        for(Seat seat : seatsRepository.findAll()){
-            System.out.println("Row: " + seat.getRowno()+ " Seat: " + seat.getSeatno() + "Venue " + seat.getVenue().getName());
-        }
-        for (TicketType type : ticketTypesRepository.findAll()){
-            System.out.println(type.getType());
-        }
+//        System.out.println("\n1.All productions...");
+//		for (Production production : productionsRepository.findAll()) {
+//			System.out.println(production);
+//		}
+//		System.out.println("\n1.All professions...");
+//		for (Profession profession : professionsRepository.findAll()) {
+//			System.out.println(profession);
+//		}
+//		for(TheatreOffice office : theatreOfficesRepository.findAllByCity("Warszawa")) {
+//			System.out.println(office.getCity());
+//		}
+//        for(Venue venue : venueRepository.findAll()) {
+//            System.out.println(venue.getName());
+//        }
+//        for(Seat seat : seatsRepository.findAll()){
+//            System.out.println("Row: " + seat.getRowno()+ " Seat: " + seat.getSeatno() + "Venue " + seat.getVenue().getName());
+//        }
+//        for (TicketType type : ticketTypesRepository.findAll()){
+//            System.out.println(type.getType());
+//        }
         for (Employee employee : employeeRepository.findAll()){
             System.out.println(employee.getFirstname() + employee.getLastname() + employee.getGender());
+        }
+        for (Performance performance : performanceRepository.findAll()){
+            System.out.println(performance.getVenue().getName());
+        }
+        for (Ticket ticket : ticketsRepository.findAll()){
+            System.out.println(ticket.getTicketType().getType());
         }
 	}
 }
