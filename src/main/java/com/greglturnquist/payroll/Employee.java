@@ -3,6 +3,7 @@ package com.greglturnquist.payroll;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by bartek on 14.06.17.
@@ -42,6 +43,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "PROFESSIONID")
     private Profession profession;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
+
+
 
     public Employee(){}
 

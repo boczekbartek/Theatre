@@ -2,6 +2,7 @@ package com.greglturnquist.payroll;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Set;
 
 /**
  * Created by bartek on 14.06.17.
@@ -12,6 +13,8 @@ public class Seat {
     private @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long seatID;
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
 
     public String getRowno() {
         return rowno;

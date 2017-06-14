@@ -1,6 +1,7 @@
 package com.greglturnquist.payroll;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by bartek on 14.06.17.
@@ -13,7 +14,8 @@ public class TicketType {
     Long tickettypeID;
     private String type;
     private String discount;
-
+    @OneToMany(mappedBy = "ticketType", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
     public String getType() {
         return type;
     }

@@ -18,6 +18,8 @@ public class Production {
     private String playwright;
     @OneToMany(mappedBy = "production", cascade = CascadeType.ALL)
     private Set<Performance> performances;
+//    @OneToMany(mappedBy = "production", cascade = CascadeType.ALL)
+//    private Set<Role> roles;
 
     private Production() {}
 

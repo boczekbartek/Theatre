@@ -20,11 +20,9 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "PERFORMANCEID")
     private Performance performance;
-
     public TicketType getTicketType() {
         return ticketType;
     }
-
     @ManyToOne
     @JoinColumn(name = "TICKETTYPEID")
     private TicketType ticketType;

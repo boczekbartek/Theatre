@@ -2,6 +2,7 @@ package com.greglturnquist.payroll;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by bartek on 14.06.17.
@@ -18,6 +19,10 @@ public class Performance {
     @ManyToOne
     @JoinColumn(name = "PRODUCTIONID")
     private Production production;
+    @OneToMany(mappedBy = "performance", cascade = CascadeType.ALL)
+    private Set<Ticket> tickets;
+
+
 
     public Venue getVenue() {
         return venue;

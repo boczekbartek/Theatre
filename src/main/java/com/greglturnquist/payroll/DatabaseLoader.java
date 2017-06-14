@@ -16,6 +16,7 @@
 package com.greglturnquist.payroll;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -38,6 +39,9 @@ public class DatabaseLoader implements CommandLineRunner {
     private final EmployeeRepository employeeRepository;
     private final PerformanceRepository performanceRepository;
     private final TicketsRepository ticketsRepository;
+//    private final RolesRepository rolesRepository;
+
+    //TODO prodcuton type productionstypes, roles
 
 	@Autowired
 	public DatabaseLoader(ProductionsRepository productionsRepository,
@@ -48,7 +52,9 @@ public class DatabaseLoader implements CommandLineRunner {
                           TicketTypesRepository ticketTypesRepository,
                           EmployeeRepository employeeRepository,
                           PerformanceRepository performanceRepository,
-                          TicketsRepository ticketsRepository) {
+                          TicketsRepository ticketsRepository
+//                          RolesRepository rolesRepository
+) {
 
 		this.productionsRepository = productionsRepository;
 		this.professionsRepository = professionsRepository;
@@ -59,6 +65,7 @@ public class DatabaseLoader implements CommandLineRunner {
 	    this.employeeRepository = employeeRepository;
 	    this.performanceRepository = performanceRepository;
 	    this.ticketsRepository = ticketsRepository;
+//	    this.rolesRepository = rolesRepository;
 	}
 
 	@Override
@@ -99,6 +106,9 @@ public class DatabaseLoader implements CommandLineRunner {
         for (Ticket ticket : ticketsRepository.findAll()){
             System.out.println(ticket.getTicketType().getType());
         }
+//        for (Role role : rolesRepository.findAll()){
+//            System.out.println(role.getCharactername());
+//        }
 	}
 }
 // end::code[]

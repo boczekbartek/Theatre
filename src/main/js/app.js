@@ -1,13 +1,13 @@
 'use strict';
 
 // tag::vars[]
-const React = require('react');
+import React from 'react';
 const ReactDOM = require('react-dom')
 const client = require('./client');
 // end::vars[]
 
 // tag::app[]
-class App extends React.Component {
+class ProductionDownloader extends React.Component {
 
     constructor(props) {
         super(props);
