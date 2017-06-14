@@ -14,6 +14,9 @@ export default class Production extends React.Component {
                 <td>{this.props.production.name}</td>
                 <td>{this.props.production.playwright}</td>
                 <td>{this.props.production.description}</td>
+                <td>
+                    <button class="btn-default">Szczegoóły</button>
+                </td>
             </tr>
         )
     }

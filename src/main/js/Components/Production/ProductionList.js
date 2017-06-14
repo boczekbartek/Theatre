@@ -11,12 +11,13 @@ export default class ProductionList extends React.Component {
             <Production production={production}/>
         );
         return (
-            <table>
+            <table class="table-bordered">
                 <tbody>
                 <tr>
-                    <th>Name</th>
-                    <th>Playwright</th>
-                    <th>Description</th>
+                    <th>Tytuł</th>
+                    <th>Twórca</th>
+                    <th>Opis</th>
+                    <th></th>
                 </tr>
                 {productions}
                 </tbody>
