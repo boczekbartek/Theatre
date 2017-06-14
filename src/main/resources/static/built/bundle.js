@@ -26576,7 +26576,10 @@
 	    function EmployeeList() {
 	        _classCallCheck(this, EmployeeList);
 	
-	        return _possibleConstructorReturn(this, (EmployeeList.__proto__ || Object.getPrototypeOf(EmployeeList)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (EmployeeList.__proto__ || Object.getPrototypeOf(EmployeeList)).call(this));
+	
+	        _this.state = { details: [] };
+	        return _this;
 	    }
 	
 	    _createClass(EmployeeList, [{
@@ -26587,32 +26590,36 @@
 	                return _react2.default.createElement(_Employee2.default, { employee: employee });
 	            });
 	            return _react2.default.createElement(
-	                "table",
-	                { className: "table-bordered" },
+	                "div",
+	                null,
 	                _react2.default.createElement(
-	                    "tbody",
-	                    null,
+	                    "table",
+	                    { className: "table-bordered" },
 	                    _react2.default.createElement(
-	                        "tr",
+	                        "tbody",
 	                        null,
 	                        _react2.default.createElement(
-	                            "th",
+	                            "tr",
 	                            null,
-	                            "Imi\u0119"
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Imi\u0119"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Nazwisko"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "P\u0142e\u0107"
+	                            ),
+	                            _react2.default.createElement("th", null)
 	                        ),
-	                        _react2.default.createElement(
-	                            "th",
-	                            null,
-	                            "Nazwisko"
-	                        ),
-	                        _react2.default.createElement(
-	                            "th",
-	                            null,
-	                            "P\u0142e\u0107"
-	                        ),
-	                        _react2.default.createElement("th", null)
-	                    ),
-	                    employees
+	                        employees
+	                    )
 	                )
 	            );
 	        }
@@ -31778,7 +31785,6 @@
 	            var _this2 = this;
 	
 	            client({ method: 'GET', path: '/api/productions' }).done(function (response) {
-	                console.log(response.entity._embedded.productions);
 	                _this2.setState({ productions: response.entity._embedded.productions });
 	            });
 	        }
@@ -31822,6 +31828,10 @@
 	
 	var _Production2 = _interopRequireDefault(_Production);
 	
+	var _ProductionInfoList = __webpack_require__(286);
+	
+	var _ProductionInfoList2 = _interopRequireDefault(_ProductionInfoList);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31830,7 +31840,10 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	var client = __webpack_require__(235);
+	
 	// tag::production-list[]
+	
 	var ProductionList = function (_React$Component) {
 	    _inherits(ProductionList, _React$Component);
 	
@@ -31842,38 +31855,60 @@
 	
 	    _createClass(ProductionList, [{
 	        key: "render",
+	
+	        // constructor(){
+	        //     super();
+	        //     this.state = {venue : []}
+	        // }
+	        //
+	        // handler(link){
+	        //     console.log(link)
+	        //     client({method: 'GET', path: link.href.replace("http://localhost:8080","")}).done(response => {
+	        //         console.log({res: response});
+	        //         this.setState({venue: response.entity._embedded._links.venue}).bind(this);
+	        //     });
+	        //
+	        //
+	        // }
+	
+	
 	        value: function render() {
 	            console.log(this.props.productions);
 	            var productions = this.props.productions.map(function (production) {
 	                return _react2.default.createElement(_Production2.default, { production: production });
 	            });
+	
 	            return _react2.default.createElement(
-	                "table",
-	                { className: "table-bordered" },
+	                "div",
+	                null,
 	                _react2.default.createElement(
-	                    "tbody",
-	                    null,
+	                    "table",
+	                    { className: "table-bordered" },
 	                    _react2.default.createElement(
-	                        "tr",
+	                        "tbody",
 	                        null,
 	                        _react2.default.createElement(
-	                            "th",
+	                            "tr",
 	                            null,
-	                            "Tytu\u0142"
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Tytu\u0142"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Tw\xF3rca"
+	                            ),
+	                            _react2.default.createElement(
+	                                "th",
+	                                null,
+	                                "Opis"
+	                            ),
+	                            _react2.default.createElement("th", null)
 	                        ),
-	                        _react2.default.createElement(
-	                            "th",
-	                            null,
-	                            "Tw\xF3rca"
-	                        ),
-	                        _react2.default.createElement(
-	                            "th",
-	                            null,
-	                            "Opis"
-	                        ),
-	                        _react2.default.createElement("th", null)
-	                    ),
-	                    productions
+	                        productions
+	                    )
 	                )
 	            );
 	        }
@@ -31917,13 +31952,24 @@
 	var Production = function (_React$Component) {
 	    _inherits(Production, _React$Component);
 	
-	    function Production() {
+	    // _handle(){
+	    //     this.props.handler(this.props.production._links.performances)
+	    // }
+	    function Production(props) {
 	        _classCallCheck(this, Production);
 	
-	        return _possibleConstructorReturn(this, (Production.__proto__ || Object.getPrototypeOf(Production)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Production.__proto__ || Object.getPrototypeOf(Production)).call(this, props));
+	
+	        _this.handleDelete = _this.handleDelete.bind(_this);
+	        return _this;
 	    }
 	
 	    _createClass(Production, [{
+	        key: "handleDelete",
+	        value: function handleDelete() {
+	            this.props.onDelete(this.props.employee);
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            console.log(this.props);
@@ -31950,8 +31996,8 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        "button",
-	                        { className: "btn-default" },
-	                        "Szczego\xF3\u0142y"
+	                        { className: "btn-danger", onClick: this.handleDelete },
+	                        "Delete"
 	                    )
 	                )
 	            );
@@ -31964,6 +32010,61 @@
 	
 	
 	exports.default = Production;
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// tag::production-list[]
+	var ProductionInfoList = function (_React$Component) {
+	    _inherits(ProductionInfoList, _React$Component);
+	
+	    function ProductionInfoList() {
+	        _classCallCheck(this, ProductionInfoList);
+	
+	        return _possibleConstructorReturn(this, (ProductionInfoList.__proto__ || Object.getPrototypeOf(ProductionInfoList)).apply(this, arguments));
+	    }
+	
+	    _createClass(ProductionInfoList, [{
+	        key: 'render',
+	        value: function render() {
+	            console.log(this.props.venue);
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                this.props.venue
+	            );
+	        }
+	    }]);
+	
+	    return ProductionInfoList;
+	}(_react2.default.Component);
+	// end::production-list[]/**
+	
+	
+	exports.default = ProductionInfoList;
 
 /***/ })
 /******/ ]);

@@ -15,10 +15,10 @@ export default class ProductionDownloader extends React.Component {
 
     componentDidMount() {
         client({method: 'GET', path: '/api/productions'}).done(response => {
-            console.log(response.entity._embedded.productions);
             this.setState({productions: response.entity._embedded.productions});
         });
     }
+
 
     render() {
         console.log(this.state);

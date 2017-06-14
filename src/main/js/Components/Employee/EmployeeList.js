@@ -27,7 +27,7 @@ export default class EmployeeList extends React.Component {
                 {employees}
                 </tbody>
             </table>
-            <div class="row">{Articles}</div>
+
         </div>
         )
     }
